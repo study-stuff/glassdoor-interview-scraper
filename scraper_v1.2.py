@@ -9,8 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 
-username = "example@email.com" # your email here
-password = "password" # your password here
+username = "pritom.messi@gmail.com" # your email here
+password = "kiit12345" # your password here
 
 # Manual options for the company, num pages to scrape, and URL
 pages = 10
@@ -38,8 +38,9 @@ def login(driver, username, password):
     try:
         user_field = driver.wait.until(EC.presence_of_element_located(
             (By.NAME, "username")))
-        pw_field = driver.find_element_by_class_name("signin-password")
-        login_button = driver.find_element_by_id("signInBtn")
+        pw_field = driver.wait.until(EC.presence_of_element_located(
+            (By.NAME, "password")))
+        login_button = driver.find_element_by_xpath("//button[contains(@class, 'gd-btn gd-btn-1 minWidthBtn')]");
         user_field.send_keys(username)
         user_field.send_keys(Keys.TAB)
         time.sleep(1)
